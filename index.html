@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+<script language="javascript" type="text/javascript" src="js/login.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css"> 
+</head>
 <body> 
-<form name="indexForm">
+<form onsubmit="return validateLogin();" action="html/feed/feed.html">
 <div id="container">
-<div id="headContainer">
-	<div style="float:left;"> 
-		<div>my book</div> 
+<div id="headerContainer">
+<div  id="headerGroup" >
+	<div id="leftHeader"> 
+		Frontian's Book
 	</div>  
-	<div style="float:right"> 
-		<div> <input type="text" name="uName"/> <input type="password" name="pWord"/> <input type="button" name="uName"/> 
-		</div>
+	<div id="rightHeader"> 
+		<input type="text" id="uName" placeholder="User Name"/> <input type="password" id="pWord" placeholder="Password"/>  <input type="submit" value="Signin">
 	</div>
 </div>
-<div id="mainContainer" style="background-image: url('img/ofs.jpg');">
+</div>
+<div id="mainContainer">
 
 </div>
 <div id="footerContainer">
-
+Talent Improving exercise, OFS
 </div>
 </div>
 </form>
