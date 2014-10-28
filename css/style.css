@@ -80,9 +80,8 @@ div#feedMainContainer {
 }
 #feedSection {
 	position: absolute;
-    width:350px;
+    width:550px;
     float:left;
-	margin-top:80px;
 	margin-left:110px;
     padding:10px; 
 	height:75px;
@@ -104,6 +103,13 @@ div#feed {
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     font-size:16px;
 	color: white;
+}
+
+div#feedDisplaySection {
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size:16px;
+	top:50px;
+	position: relative;
 }
 
 div#feed  a{
@@ -139,6 +145,7 @@ div#profile a{
     font-size:16px;
 	color: white;
 	text-decoration: none;
+	
 }
 
 div#profileSelected {
@@ -176,3 +183,35 @@ div#feedText {
 	
 }
 
+div#postSection {
+    width:550px;
+    float:left;
+	margin-top:20px;
+}
+
+div#postText {
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size:22px;
+    text-align:left;
+	width:400px;
+	float:left;
+}
+
+div#postButton {
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size:22px;
+    text-align:left;
+	float:right;	
+}
+
+.postTextInput {
+	width:400px;
+	height:18px;
+	padding:7px;
+	border:1px solid black;
+  }
+  
+.postButton {
+	width:100px;
+	border:1px solid black;
+  }
