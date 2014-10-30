@@ -108,8 +108,13 @@ div#feed {
 div#feedDisplaySection {
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     font-size:16px;
-	top:50px;
+	top:70px;
 	position: relative;
+}
+.feedDisplay {
+	border-style: solid;
+    border-color: #98bf21;
+	height:50px;	
 }
 
 div#feed  a{
@@ -165,11 +170,13 @@ div#profileSelected  a{
 
 div#feedpic {
 float: left;
+position: absolute;
 }
 
 div#feedpic  img{
 	height:50px;
 	width:50px;
+
 }
 
 div#feedText {
@@ -178,9 +185,10 @@ div#feedText {
 	color: #00CC99;
 	float: left;
 	margin-top: 10px;
-	position: inherit;
-	vertical-align: text-bottom;
-	
+	margin-left: 50px;
+	vertical-align: text-top;
+	position: absolute;
+	overflow:auto;
 }
 
 div#postSection {
@@ -195,6 +203,7 @@ div#postText {
     text-align:left;
 	width:400px;
 	float:left;
+	
 }
 
 div#postButton {
@@ -215,3 +224,17 @@ div#postButton {
 	width:100px;
 	border:1px solid black;
   }
+  
+.feeddelete {
+	float: right;
+	right: 2px;
+	width:20%;
+}
+
+  
+.feeddate {
+	float: right;
+	position: absolute;
+	right: 0px;
+}
+
