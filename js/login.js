@@ -2,6 +2,7 @@
 function validateLogin(){
 	var username = "testuser";
 	var password = "test12";
+	
 	var isloginSuccess = false;
 	var inUserName = document.getElementById("uName").value;
 	var inPwd = document.getElementById("pWord").value;

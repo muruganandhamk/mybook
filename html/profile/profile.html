@@ -26,8 +26,35 @@
 			<div id="profileSelected"><a href="#">Profile</a></div>
 		</div>
 		
-		<div id="profile">
-			<div > </div>
+		<div id="profile"> 
+			<div id="profileText">			
+				<table cellspacing="10px">
+					<tr cellspacing="50px" cellpadding="50px">
+						<td width="50%">
+						<input type="text" size="50px" id="name" placeholder="Name" 
+						onblur="checkForSave();" onkeyup="checkNameLength(this);" />
+						<font color="red">*</font><br><br>
+						<input type="text" size="50px" id="age" placeholder="Age" onblur="checkForSave();" />
+						<font color="red">*</font><br><br>
+						<input type="text" size="50px" id="phone" placeholder="Phone" 
+						onblur="checkForSave();" />
+						<font color="red">*</font><br><br>
+						<input type="text" size="50px" id="email" placeholder="Email" 
+						onblur="checkForSave();" />
+						<font color="red">*</font><br><br>
+						<textarea rows="5" cols="40" size="50px" id="address" placeholder="Address" ></textarea>
+						<br><br>
+						<input type="file" name="pic" id="profilePicture" accept="image/*">
+						<br><br>
+						<input type="button" value="Save" id="save" disabled onclick="saveProfile();"/>
+						</td>
+						<td width="50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="" id="profileimg" alt="No Profile Image" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="profilePic"><img src="../../img/dummy.jpg" id="profileimg" style="height=50px; width=50px;"/></div>
 		</div>
 	</div>
 	<!-- Footer -->

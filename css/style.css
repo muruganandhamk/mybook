@@ -238,3 +238,15 @@ div#postButton {
 	right: 0px;
 }
 
+div#profileText {
+	float: left;
+	margin-left:30%;
+	margin-top:30px;
+}
+
+div#profilePic {
+	float: right;
+	right:30%;
+	margin-top:30px;
+	position: absolute;	
+}

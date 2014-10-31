@@ -1,16 +1,13 @@
 "use strict";
 
 var feeds = [];
-alert('test');
 
 var feedService = (function() {
-	alert('feedService');
+
 	var feed = {
 		id:0,
 		type: ""
 	};
-	
-	alert(feed);
 	
 	feed.getId = function() {
 		return this.id;
@@ -19,32 +16,36 @@ var feedService = (function() {
 	feed.getType = function() {
 		return this.type;
 	};
+
 	return {
 		createFeed : function() {
-		alert('createFeed');
 			var inFeed = document.getElementById("post").value;
 			var imgPath ="../../img/smiley.gif";
 			if( inFeed.length === 0){
 				alert("Post can't be empty");
 				return;
-			}
-			alert(inFeed);
-			if(inFeed.toUpperCase().indexOf('HTTP:') > 0 || inFeed.toUpperCase().indexOf('WWW.') > 0) {
+			}			
+			var d = new Date();								
+			var createdOn = d.getDate() + '-' +(d.getMonth()+1)+'-'+d.getFullYear()+ ':'+d.getHours()+ ':'+d.getMinutes()+ ':'+d.getSeconds();
+			if(inFeed.toUpperCase().indexOf('HTTP:') >= 0 || inFeed.toUpperCase().indexOf('WWW.') >= 0) {			
 				var urlFeed = Object.create(feed);
 				if(feeds.length > 0) {
-					textFeed.id = feeds[feeds.length-1].id+1;
+					urlFeed.id = feeds[feeds.length-1].id+1;
 				} else {
-					textFeed.id = 1 ;
+					urlFeed.id = 1 ;
 				}
 				urlFeed.type = "URL";
+				
 				urlFeed.getFeed = function() {
-					this.url;
+					return this.url;
+				}
+				
+				if(inFeed.toUpperCase().indexOf('WWW.') == 0){
+				inFeed = "http://"+inFeed;
 				}
 				urlFeed.url = inFeed;
-				urlFeed.createdOn =  Date.now();
+				urlFeed.createdOn =  createdOn;
 				feeds.push(urlFeed);
-				alert(urlFeed);
-				alert(feeds.length);
 				addFeedInHTML(urlFeed.type, urlFeed.id, urlFeed.url, imgPath, urlFeed.createdOn);
 			} else {
 				var textFeed = Object.create(feed);
@@ -54,41 +55,65 @@ var feedService = (function() {
 					textFeed.id = 1 ;
 				}
 				textFeed.type = "TEXT";
+				
 				textFeed.getFeed = function() {
-					this.text;
+					return this.text;
 				}
 				textFeed.text = inFeed;
-				textFeed.createdOn =  Date.now();
-				feeds.push(textFeed);
-				alert(textFeed);
-				alert(feeds.length);
-				alert(textFeed.id);
+				
+				textFeed.createdOn =  createdOn;
+				feeds.push(textFeed);								
 				addFeedInHTML(textFeed.type, textFeed.id, textFeed.text, imgPath, textFeed.createdOn);
 			}
-			
+			document.getElementById("post").value ="";
+			localStorage.setItem('testuserfeed',JSON.stringify(feeds));
 		},
 
-		deleteFeed : function() {
-		alert('inside deleteFeed')			
+		deleteFeed : function(feedId) {		
+			var i=0;
+			for(var feedObj in feeds)	{			
+				if(feeds[feedObj].getId() == feedId){				
+					feeds.splice(i,1)
+				}
+				i++;
+			}
+			localStorage.setItem('testuserfeed',JSON.stringify(feeds));
+			var imgPath ="../../img/smiley.gif";
+			document.getElementById("feedDisplaySection").innerHTML="";
+			for(var feedObj in feeds)	{			
+				addFeedInHTML (feeds[feedObj].getType(), feeds[feedObj].getId(), feeds[feedObj].getFeed(), imgPath, feeds[feedObj].createdOn );
+			}
 		}
 	}
 
 } );
 
 function addFeed() {
-alert('addFeed');
 var feedobj = feedService();
 feedobj.createFeed();
 }
 
 function deleteFeed(feedId) {
-alert(feedId);
-alert('deleteFeed');
 var feedobjtodel = feedService();
-feedobjtodel.deleteFeed();
+feedobjtodel.deleteFeed(feedId);
 }
 
+function loadFeeds() {
 
+	/*var retrievedFeedObject = localStorage.getItem('testuserfeed');
+	alert('Feeds' + retrievedFeedObject);
+	var feeds = JSON.parse(localStorage.getItem('testuserfeed'));
+	alert('Feeds object' + feeds);
+	if(feeds != undefined && feeds != null) {
+		var imgPath ="../../img/smiley.gif";
+		document.getElementById("feedDisplaySection").innerHTML="";	
+		for(var feedObj in feeds)	{			
+			addFeedInHTML (feeds[feedObj].getType(), feeds[feedObj].getId(), feeds[feedObj].getFeed(), imgPath, feeds[feedObj].createdOn );
+		}
+	} else {
+		//feeds = [];
+	} */
+}
 
 //
 
@@ -113,3 +138,6 @@ var strNode = '<div class="feedDisplay"> ' +
 document.getElementById("feedDisplaySection").innerHTML = strNode + strPosts;
 				
 }
+
+
+
